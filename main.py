@@ -1,14 +1,18 @@
-import requests
+from os import environ
 
-# suppply okta issuer, client id, and secret
-OKTA_ISSUER = ""
-OKTA_CLIENT_ID = ""
-OKTA_CLIENT_SECRET = ""
+import requests
+from dotenv import load_dotenv
+
+load_dotenv(".env")
+
+OKTA_ISSUER = environ["OKTA_ISSUER"]
+OKTA_CLIENT_ID = environ["OKTA_CLIENT_ID"]
+OKTA_CLIENT_SECRET = environ["OKTA_CLIENT_SECRET"]
 
 
 def is_token_active(_token: str) -> bool:
     """
-    This function will call oktas endpoint to check if the access token you provided is valid or not
+    This function will call okta's endpoint to check if the access token you provided is valid or not
 
     :_token: Your okta access token as a string
     :return: If the token is valid true, else false
