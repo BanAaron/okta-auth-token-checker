@@ -24,7 +24,10 @@ def is_token_active(_token: str) -> bool:
     if response.status_code == 200:
         data = response.json()
         print(f"{data=}")
-        return True
+        if data["active"]:
+            return True
+        if not data["active"]:
+            return False
     else:
         print(f"Introspection failed: {response.status_code}, {response.text}")
         return False
