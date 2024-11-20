@@ -1,3 +1,4 @@
+import sys
 from os import environ
 
 import requests
@@ -38,6 +39,6 @@ def is_token_active(_token: str) -> bool:
 
 
 if __name__ == "__main__":
-    token = ""
+    token = sys.argv[1]
     res = is_token_active(token)
     print(f"{res=}")
